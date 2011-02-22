@@ -1,0 +1,10 @@
+Release notes for Beta version of tless
+
+1.  tless currently does not support piping of files through stdin.  There are two reasons for this.  First, there is no seek operation so all rows read would have to be stored, creating a potentially large footprint (much like the --cache 0 option). Second, input from the file stdin must be distinguished from terminal input for key-commands.  These are not insurmountable issues, and will be addressed in a future release.
+
+2.  The beta version has been tested on some simple files of different types (csv output from excel, tab-delimited, space-delimited).  These include some of the real files on which I originally desired to use it.  However, it was not run through a series of extensive regression tests.  The beta version is being released under the premise that few enough bugs remain to make it quite useful and those bugs will quickly be found and eliminated through use.  
+
+3.  I developed "tless" on the Darwin flavor of unix.  The code relies only on posix libraries and curses and should be quite portable.  However, as yet it has only been tested on macos.  It is my  intention to build packages for various unix flavors as time permits.  Autoconf is overkill for our needs, so a simple Makefile is used instead.  This may easily be tailored as needed.  
+
+4.  The implementation of CSV parsing is primitive but should cover 90% of real uses.  It can resolve basic fields delimited by , and with or without "" around them.  There can be commas inside the "" as well.  This should suffice for most purposes.  However, arbitrarily fields (ala the full csv spec) are not supported.   In future, this will be addressed.  The main reason for this limitation is that I did not want to write a new (and inevitably buggy) full csv parser and have yet to determine whether any existing library is sufficiently widespread to maintain portability.  
+

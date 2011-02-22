@@ -1,0 +1,15 @@
+
+Action        Cols                 Rows
+-----------------------------------------------
+Move       a < l r > e    g b|u y|k j f|d|spc G
+(Un)Freeze   C [n|.]              R [n|.]      
+(Un)Hide   H [n|.]                             
+Search     S|? [str|/str/]      s|/ [str|/str/]
+-----------------------------------------------
+Col width:  +/-[n|.]   W[n:m]    W[.:m]        
+Cell just (lft|rgt):   ^|$ [n|.]               
+Mark set|recover:      m|' [c]                 
+Cell: L[row:col] (goto) v[row:col] (disp)      
+General: q(quit) h(hlp) Y(draw) F(rsteof)      
+Disp: x(grid) z(seps) P(rowidx) V(colidx)      
+-----------------------------------------------
