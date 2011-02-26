@@ -46,7 +46,8 @@ CONTENTS
 The following are needed for the full build:
 Source code:  KTV*.h  KTV*.cpp  Makefile main.cpp
 Scripts:      Makefile ktvpod2help.pl ktvpod2keyhelp.pl
-Source docs:  tless.pod   tless_keys.txt  RELEASE.txt README.txt
+Source docs:  tless.pod   tless_keys.txt  RELEASE.txt README.txt TUTORIAL.txt
+Test script:  TestGenTable.pl
 
 The following are generated and should not be modified for a simple source build:
 gen/*  (includes autogen*.cpp and tless.* documentation files)

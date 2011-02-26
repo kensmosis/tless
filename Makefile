@@ -20,7 +20,7 @@ SYSBINDIR := /usr/local/bin
 SYSMANDIR := /usr/local/share/man/man1
 
 #  Put non-standard cases here!
-ifeq ($(UNAME), FreeBSD))
+ifeq ($(UNAME),FreeBSD)
 	SYSMANDIR := /usr/local/man/man1
 endif
 #
@@ -93,11 +93,11 @@ gens: cleangen $(GDIR)/autogen_KTVUsage.cpp $(GDIR)/autogen_KTVKeyHelp.cpp man
 all: clean gens tless
 
 binbundle:
-	tar -c -f tless_bin_dist_intel_$(UNAME).tar README.txt RELEASE.txt ./bin/tless ./gen/tless.1 Makefile TestGenTable.pl
+	tar -c -f tless_bin_dist_intel_$(UNAME).tar README.txt RELEASE.txt TUTORIAL.txt ./bin/tless ./gen/tless.1 Makefile TestGenTable.pl
 	gzip -9 tless_bin_dist_intel_$(UNAME).tar
 
 srcbundle:
-	tar -c -f tless_src_dist.tar KTVTokenizer.cpp KTVTokenizer.h KTVFileManager.cpp KTVFileManager.h KTVScreen.cpp KTVScreen.h KTVColRowManager.cpp KTVColRowManager.h KTVIdxList.h KTVMain.cpp KTVMain.h main.cpp ktvpod2keyhelp.pl ktvpod2help.pl Makefile tless_keys.txt tless.pod README.txt RELEASE.txt TestGenTable.pl ./gen/*
+	tar -c -f tless_src_dist.tar KTVTokenizer.cpp KTVTokenizer.h KTVFileManager.cpp KTVFileManager.h KTVScreen.cpp KTVScreen.h KTVColRowManager.cpp KTVColRowManager.h KTVIdxList.h KTVMain.cpp KTVMain.h main.cpp ktvpod2keyhelp.pl ktvpod2help.pl Makefile tless_keys.txt tless.pod README.txt RELEASE.txt TUTORIAL.txt TestGenTable.pl ./gen/*
 	gzip -9 tless_src_dist.tar
 
 install: $(BDIR)/tless $(GDIR)/tless.1

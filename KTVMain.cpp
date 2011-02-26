@@ -18,7 +18,6 @@ void KTVMain::ReadArguments(int argc,char *const *argv)
 		{ "csv",		no_argument,		NULL,	'c' },
 		{ "fixed",	required_argument,	NULL,	'x' },
 		{ "ignoreleading",	required_argument,	NULL,	'l' },
-		{ "doseol",	no_argument,		NULL,	'y' },
 		{ "eol",		required_argument,	NULL,	'e' },
 		{ "aligntofirst",	no_argument,	NULL,	'a' },
 		{ "defwidth",	required_argument,	NULL,	'w' },
@@ -36,7 +35,7 @@ void KTVMain::ReadArguments(int argc,char *const *argv)
 		{ "tab",		no_argument,		NULL,	't' }
 	};
 	int c;
-	while ((c = getopt_long(argc,argv,"hf:k:z:d:s:cx:l:ye:aw:G:S:R:C:j:F:M:QX:mvt", lo, NULL))!= -1)
+	while ((c = getopt_long(argc,argv,"hf:k:z:d:s:cx:l:e:aw:G:S:R:C:j:F:M:QX:mvt", lo, NULL))!= -1)
 	{
 		#ifdef KTVTESTMODE
 		fprintf(stderr,"Registered option %c with arg[%s]\n",c,optarg?optarg:"");
@@ -89,9 +88,6 @@ void KTVMain::ReadArguments(int argc,char *const *argv)
 			else if (!strcmp(optarg,"off")) _tok._ignoreleading= 0;
 			else { fprintf(stderr,"Arg Error:  Invalid value for ignoreleading\n"); exit(1); }
 			break;
-		case 'y':
-			_fm.SetEOLChar('\r');
-			break;
 		case 'e':
 			_fm.SetEOLChar(optarg[0]);
 			break;
@@ -102,12 +98,20 @@ void KTVMain::ReadArguments(int argc,char *const *argv)
 			_cr.SetDefaultColWidth(atoi(optarg));
 			break;
 		case 'G':
-			_sc.SetGrid(1);
-			if (optarg) _sc.SetGridSep(optarg[0]);
+			if (!optarg) _sc.SetGrid(0);
+			else
+			{
+				_sc.SetGrid(1);
+				_sc.SetGridSep(optarg[0]);
+			}
 			break;
 		case 'S':
-			_sc.SetSeps(1);
-			if (optarg) _sc.SetFrozenSep(optarg[0]);
+			if (!optarg) _sc.SetSeps(0);
+			else
+			{
+				_sc.SetSeps(1);
+				_sc.SetFrozenSep(optarg[0]);
+			}
 			break;
 		case 'R':
 			if (!strcmp(optarg,"on")) _sc.SetRowIndex(1);
@@ -266,7 +270,7 @@ void KTVMain::ExecCommand(char c,const string &arg)
 	case '<': _cr.MoveToCol(_cr.GetMinColFittingFromRight(cl));	break;
 	case 'g': _cr.MoveToRow(_cr.BaseRow());  break;
 	case 'G':	_cr.MoveToLastRow(); break;
-	case 'f': 
+	case 'f':
 	case ' ':
 	case 'd':
 			_cr.MoveToRow(rb); break;
@@ -277,7 +281,7 @@ void KTVMain::ExecCommand(char c,const string &arg)
 	case 'k':
 			_cr.MoveToRow(_cr.PrevActiveRow(rt)); break;
 	case 'j':
-		// *** Add return here like d or j!
+	case '\r':		// *** Test this
 			_cr.MoveToRow(_cr.NextActiveRow(rt)); break;
 	case 'C':
 			if (arg==".") _cr.UnFreezeAllCols();
@@ -348,6 +352,10 @@ void KTVMain::ExecCommand(char c,const string &arg)
 			}
 			_cr.Restate();
 			break;
+	case ')':
+			_cr.IncreaseAllColWidths(1);
+			_cr.Restate();
+			break;
 	case '-':
 			if (arg==".") _cr.IncreaseAllColWidths(-1);
 			else
@@ -355,6 +363,10 @@ void KTVMain::ExecCommand(char c,const string &arg)
 				n= strtol(arg.c_str(),NULL,10);
 				_cr.IncreaseColWidth(n,-1);
 			}
+			_cr.Restate();
+			break;
+	case '(':
+			_cr.IncreaseAllColWidths(-1);
 			_cr.Restate();
 			break;
 	case 'W':
@@ -376,6 +388,11 @@ void KTVMain::ExecCommand(char c,const string &arg)
 						_cr.SetColWidth(n,wid);
 					}
 				}
+				else		// If just a number, all cols
+				{
+					int wid= strtol(col.c_str(),NULL,10);
+					if (wid>0) _cr.SetAllColWidths(wid);
+				}
 			}
 			}
 			_cr.Restate();
@@ -394,6 +411,9 @@ void KTVMain::ExecCommand(char c,const string &arg)
 				_cr.LeftJustifyCol(n);
 			}
 			break;
+	case '[':
+			_cr.LeftJustifyAllCols();
+			break;
 	case '$':
 			if (arg==".") _cr.RightJustifyAllCols();
 			else
@@ -401,6 +421,9 @@ void KTVMain::ExecCommand(char c,const string &arg)
 				n= strtol(arg.c_str(),NULL,10);
 				_cr.RightJustifyCol(n);
 			}
+			break;
+	case ']':
+			_cr.RightJustifyAllCols();
 			break;
 	case 'x':
 			_sc.ToggleGrid();

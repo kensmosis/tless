@@ -1,6 +1,7 @@
 #ifndef KTVFILEMANAGERDEFFLAG
 #define KTVFILEMANAGERDEFFLAG
 
+#include <stdio.h>
 #include <vector>
 #include <string>
 #include <map>

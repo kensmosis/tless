@@ -2,7 +2,8 @@
 #include <string.h>
 #include "KTVFileManager.h"
 
-// My more flexible version of Kfgets.  maxlen includes null terminator.  If eol is 0 then any of '\r' or '\n' will match it.  Multiple such chars are NOT merged!  Always terminates on a null.  
+// My more flexible version of Kfgets.  maxlen includes null terminator.  
+// EOL will be any of:  0, \r, \n, \r\n.
 // Unlike fgets, returns a code.  Number of chars read or -1(EOF), -2(error), -3(ran out of space in tgt)
 // If we do run out of space, we continue to scan until EOL but only record the first maxlen-1 chars in the buffer.  We are guarantee on return that the seek location is one past the eol char (or the eof) unless an error code is returned.
 int KTVFileManager::Kfgets(char *tgt,int maxlen,FILE *f,char eol)
@@ -25,6 +26,13 @@ int KTVFileManager::Kfgets(char *tgt,int maxlen,FILE *f,char eol)
 		else if (!c||c==eol||(!eol&&(c=='\n'||c=='\r')))
 		{
 			tgt[numread]= 0;
+			if (c=='\r')	// Advance to skip any following '\n'
+			{
+				c= fgetc(f);
+				if (c=='\n');
+				else if (f==stdin) ungetc(c,stdin);	// Try.  If EOF, will fail but ok
+				else fseek(f,-1,SEEK_CUR);
+			}
 			return numread;
 		}
 		else if (numread<maxlen-1) // Only add a char if still under limit
@@ -208,6 +216,7 @@ bool KTVFileManager::FindAndReadRow(int i,vector<int> &foo,int currnumcols)
 		{ 
 			assert(EOFKnown()); 		// It better be if we've already encountered it!
 			assert(i==_maxrow);	// We can't have passed the end, so it better be the same EOF as before!
+			return AddParseRow(i,buf,foo,currnumcols);		// We read it, so ok
 		}
 		else return AddParseRow(i,buf,foo,currnumcols);
 	}

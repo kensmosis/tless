@@ -1,0 +1,89 @@
+A simple Tutorial for use of tless.  In the following tutorial, when we say to hit a key, just hit that key.  When we say to type "foo bar", hit the key foo and then type bar followed by enter.  The space is just to separate the two in our tutorial.  Do not type it.
+
+1.  First, locate a file you wish to play with.  It may have fixed column positions, be delimited in various ways, or be CSV.  If you wish to generate a file, use the include program.  
+
+perl ./TestGenTable.pl tab 100 100 ./bin/tless
+
+"tab" may be any of 
+	tab			Delimited by single tabs
+	multi		Delimited by a random choice of | : space tab
+	csv			CSV delimited
+	fixed		A set of random fixed column widths
+	spaces		A random number of spaces between columns 
+
+The next 2 arguments are the number of rows and columns respectively.
+The last argument is the location of the tless binary to test.  Default is ./bin/tless.
+
+The file generates an appropriate table in /tmp and then executes tless on it.  Upon exit, the table file is removed.
+
+The generated table consists of pairs of the form  row,col.  The row and column indices should match up perfectly with the cell contents.   The table is unexciting but gives an immediate indication of whether things look right. 
+
+2.  When tless starts, the screen displays a set of columns.  The top row and left column are indices.  Whenever command requires a row or col #, these may be used to figure out the right one. 
+
+The bottom row is blank and serves as a status/command line.  When a key is pressed that requires further input, the key followed by a space appears followed by any additional user input.  Enter should then be pressed.  Note that single key commands do not require enter -- only those with additional parameters do.  
+
+There are separators between the columns. 
+
+3.  First, let's try scrolling around.   Press the following keys to move around the document.
+	lrae<>ykjbufdgG spc and ret
+
+4.  Can't remember a key?  Hit h.  To exit the help, hit q.  
+
+5.  Let's try freezing columns and rows:
+	Hit "C 0"
+	A vertical line of #'s should appear.  
+	Hit "R 0" followed by "R 5" followed by "R 2"
+	A horizontal line of #'s should appear.
+	
+	Try the scroll commands again.  The first three rows and 1st column are frozen.
+
+6.  Let's compare Row 50 with Row 7
+	First, unfreeze the rows.  Hit "R ." to unfreeze all rows.
+	We want to freeze row 7 so hit "R 7".  Note that to do so, row 7 must be cached.  This means that it must have previously been frozen (at any time) or be in the first or last or most recent 10K rows (unless the cache size was changed).  For our small tutorial, this shouldn't matter.  To ensure that you can freeze it just scroll until it is visible.  Then hit "R 7".
+	Hit space until row 50 is visible.  Then hit return until it is right below the frozen separator.
+
+7.  Let's play with screen aesthetics.  
+	Play with x and z to toggle the separators.
+	Play with P and V to toggle the row and column indices.
+
+8.  Hit "C 1" "C 3".  3 columns should now be frozen. Hit a to get to the far left of the doc.
+	Now, hit "H 2".  Column 2 disappears.  Hit "H 2" again.  It reappears.
+	Hit "H 2" followed by "H 1".  The frozen column disappeared too.  
+	Hit "H ." to unhide all columns.  Column 1 is still frozen.
+
+9.  Let's see how column widths look.  
+	Hit "W 3:8". 	Column 3 is now 8 wide.
+	Hit "+ 3" and "- 3" to change its width.
+	Hit "W .:20" and then "W .:12"
+	Hit "W 15" (same as "W .:15")
+	Hit "(" and ")" to change all column widths.
+
+10.  Frozen column widths do not change.  Use "C 1" twice to reset the frozen col width (though it moves it to the right of the frozen columns.  Play with this to restore and set.
+
+11.  To justify the columns hit "^ 4" and then "$ 4".  
+	Try "[" and then "]" to justify all cols.  
+
+12.  Let's move to a location.  
+	Hit "m a" to assign letter a to the current position.
+	Now let's locate a cell:
+	Try "L 38:7"
+	Hit "m b"
+	Hit "' a" to move back to the 1st spot.
+	Hit "' b" to move to the second.
+
+13.  Now let's look at a cell.  If you're not there, use "' b".
+	Shrink column 8 using "W 8:2".
+	Too narrow to see the contents?  
+	Try "v 40:8"
+	The full value appears on the status line.
+
+14.  Let's search.  Pick a value in a cell that contains string foo. Try the following
+	"g" followed by "/ foo"
+	"g" followed by "? foo"
+	Ditto with foo replaced by some regexp.
+	Use the "n" and "p" keys in each of the above searches to scan matches forward and backward.
+	Normally the match is the upper left cell (unless too few rows or columns remain).  
+	Note that if the match occurs in a frozen column or row, it may not be the upper left corner. Hidden columns are not scanned.
+
+15.  When you're done viewing the document, hit 'q' to exit.
+

@@ -308,8 +308,12 @@ void KTVScreen::DrawFrozenSeps(void)
 
 string KTVScreen::GetCommand(char c)
 {
+	const char blnk[200]= "                                                                                                                                                                                                ";
+	int nwd= _width-2;
+	if (nwd>180) nwd= 180;
 	CMVADDCH(_height-1,0,c);
-	CMVADDCH(_height-1,1,' ');
+	CMVADDNSTR(_height-1,1,blnk,nwd);
+	CMVADDCH(_height-1,1,' ');		// To move to correct location
 #ifndef KTVTESTMODE
 	echo();
 #endif

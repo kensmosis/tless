@@ -1,6 +1,7 @@
 #ifndef KTVCOLROWMANAGERDEFFLAG
 #define KTVCOLROWMANAGERDEFFLAG
 
+#include <stdio.h>
 #include <string>
 #include <vector>
 #include <assert.h>

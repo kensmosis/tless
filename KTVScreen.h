@@ -52,7 +52,7 @@ protected:
 	KTVIdxList _ar;	// Active rows
 
 public:
-	KTVScreen(void) : _grid(0), _seps(0), _width(0), _height(0), _rowindexwid(DefaultRowIndexWidth()), _colindexon(1), _filler(' '),  _vsep('|'), _fsep('#'), _fc(), _fr(), _ac(), _ar()  {}
+	KTVScreen(void) : _grid(1), _seps(1), _width(0), _height(0), _rowindexwid(DefaultRowIndexWidth()), _colindexon(1), _filler(' '),  _vsep('|'), _fsep('#'), _fc(), _fr(), _ac(), _ar()  {}
 	~KTVScreen(void) { TerminateCurses(); }
 	void RefitTerminal(void);
 	void TerminateCurses(void);
