@@ -32,7 +32,7 @@ GDIR := ./gen
 CC := g++
 CFLAGS := -g
 #CFLAGS := $(CFLAGS) -DKTVTESTMODE
-LFLAGS := -lcurses
+LFLAGS := -lncurses
 
 OBJECTS := KTVTokenizer.o KTVFileManager.o KTVScreen.o KTVColRowManager.o KTVMain.o autogen_KTVUsage.o autogen_KTVKeyHelp.o main.o
 HFILES := KTVTokenizer.h KTVFileManager.h KTVScreen.h KTVColRowManager.h KTVMain.h KTVIdxList.h
@@ -79,13 +79,13 @@ man: tless.pod | $(GDIR)
 	-rm -f pod2htmi.tmp
 	-rm -f pod2htmd.tmp
 
-$(GDIR)/:
+$(GDIR):
 	-mkdir $(GDIR)
 
-$(BDIR)/: 
+$(BDIR): 
 	-mkdir $(BDIR)
 
-$(ODIR)/: 
+$(ODIR): 
 	-mkdir $(ODIR)
 
 gens: cleangen $(GDIR)/autogen_KTVUsage.cpp $(GDIR)/autogen_KTVKeyHelp.cpp man

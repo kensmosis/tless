@@ -84,21 +84,21 @@ OPTIONS
     indicative of user error they may cause the program to exit.
 
   General
-    "-h --help"
+    -h --help
          Display usage information.
 
-    "-v --version"
+    -v --version
          Display version number.
 
-    "-f --file filename"
+    -f --file filename
          Specify an input file. At this time, reading from stdin is not
          supported.
 
-    "-z --cache n"
+    -z --cache n
          Specify a cache size. The maximal cache size will be 3x this
          because front and end caches are also used. DEFAULT=10000.
 
-    "-X --exec "cmds""
+    -X --exec "cmds"
          Execute a series of key commands once initialized. The commands are
          space delimited and each has either the form 'c' or 'c:arg:arg:...'
          where c is the key for the command and any arguments are those that
@@ -108,102 +108,104 @@ OPTIONS
     Only one of --delim, --sdelim, --csv, or --fixed may be used.
 
     WARNING: If escaped chars like \t appear in the argument to --delim or
-    --sdelim then one must be wary of the shell. For example, in bash, one
-    would write --sdelim $'\t ' to delimit with tab and space.
+    --sdelim then one must be wary of the shell. For example, in bash one
+    could write --sdelim $'\t ' to delimit with tab and space. It is best to
+    use the -t option to avoid shell issues and promote portability.
 
-    "-d --delim string"
-    "-s --sdelim string"
+    -d --delim string
+    -s --sdelim string
          The file will be parsed using the specified characters as
-         delimiters. For --delim, Adjacent delimiters are merged while for
-         --sdelim they are not. DEFAULT= tab and space.
+         delimiters. With --delim adjacent delimiters are merged, while with
+         --sdelim they are not. DEFAULT= --delim with tab and space.
 
-    "-t" Add a tab to the delimiter string. Some shell scripts make it a
-         huge pain to pass a tab to the program. If that is the case, this
-         may be used instead. It adds to the string so other characters may
-         be included in the -d or -s options as well. To parse only with
-         tabs, use -s '' -t or something similar. Note that -t implies -d if
-         no -d or -s option is explicitly specified.
+    -t   Add a tab to the delimiter string. Some shells make it challenging
+         to pass a tab to the program. If that is the case, this may be used
+         instead. If -d or -s is used as well, tab is added as a delimiter
+         to the existing choices. If not, then -d is implied. To parse only
+         with single tabs, use -s '' -t or something similar. The -t option
+         must follow any -d or -s options.
 
-    "-c --csv"
+    -c --csv
          The file will be parsed according to the csv specification. NOTE:
-         At present, this is a simplified parser. It does not allow for
-         arbitrary csv files. It allows "" or non-"" around field, and
-         allows ,'s inside of "" but nothing more complex than this.
+         At present, this is a simplified parser. It allows quoted or
+         non-quoted fields and can accommodate embedded ,'s inside of quoted
+         fields -- but nothing more complex than this.
 
-    "-x --fixed wid1:wid2:wid3:..."
+    -x --fixed wid1:wid2:wid3:...
          The file will be parsed using the specified fixed column widths.
 
-    "-l --ignoreleading on/off"
+    -l --ignoreleading on/off
          Ignore leading delimiters. This eliminates misalignments due to
          some rows starting on a delimiter and some not. DEFAULT=on.
 
-    "-y --doseol"
-         Assume DOS-style end of line ('\r').
+    -e --eol char
+         Use the specified character as the end of line marker in the file.
+         If unset, then any of \n, \r, or \r\n will match. Note that null
+         always matches and that adjacent eols (except \r\n) yield separate
+         lines and are not merged.
 
-    "-e --eol char"
-         Assume this specific char marks the end of line. If 0 then either
-         $\n$ or $\r$ will match. Note that null always matches and that
-         adjacent eols yield separate lines and are not merged. DEFAULT= 0
-         ('\n' or '\r').
-
-    "-M --maxcols n"
+    -M --maxcols n
          Specify a maximum number of columns to parse and display. Any
          additional columns are ignored.
 
-    "-Q --removequotes"
+    -Q --removequotes
          Strip outer double-quotes ("") if they are present for each field.
          The quotes are only stripped from a field if they appear as a pair.
+         Note that this is automatic with --csv.
 
-    "-k --skip n"
+    -k --skip n
          Skip the first n rows of the file for all purposes.
 
-    "-m --allowexpansion"
+    -m --allowexpansion
          Allow the file to expand while in use. The reason this must be
          specified is that a file without a terminal eol would lose the last
          line if we allow expansion (because we must hold off processing any
          line without an eol until it is complete).
 
   Display
-    "-a --aligntofirst"
+    -a --aligntofirst
          Use the specified delimiters to set the column widths to those in
-         the first row (or first non-skipped row). Only for use with --delim
-         and --sdelim. Note that this may lead to visually unappealing
-         results if the first row is a header with headings that are smaller
-         than the data entries below them (but this may always be corrected
-         using the key commands "+", "-", and "W").
+         the first row (or first non-skipped row). Not for use with --fixed.
+         Note that this may lead to visually unappealing results if the
+         first row is a header with headings that are smaller than the data
+         entries below them. This may be corrected using the key commands
+         "+", "-","(",")", and "W" as appropriate.
 
-    "-w --defwidth n"
+    -w --defwidth n
          Set the column width for all columns to n. DEFAULT=12.
 
-    "-G --grid [c]"
-         Display separators between columns. If 'c' is specified, use that
-         character as the separator. Otherwise, "|" is the default. Note
+    -G --grid [c]
+         Toggle display separators between columns. The default is ON with
+         '|' as the separator. If 'c' is specified, use that character as
+         the separator and keep the grid on. Otherwise, turn it off. Note
          that the grid may be turned on and off dynamically as well (see key
          command "x").
 
-    "-S --seps [c]"
-         Display separators between the frozen rows/cols and the active
-         portion of the screen. If 'c' is specified, use that character as
-         the separator. Otherwise, the default is "#". The separators may be
-         toggled on and off dynamically as well (see key command "y").
+    -S --seps [c]
+         Toggle display separators between the frozen rows/cols and the
+         active portion of the screen. The default is ON with '#' as the
+         separator. If 'c' is specified, use that character as the separator
+         and keep it on. Otherwise, turn it off. The separators may be
+         toggled on and off dynamically as well (see key command "z").
 
-    "-R --rowindex on/off/n"
+    -R --rowindex on/off/n
          Activate or deactivate the leftmost column, which is a row index.
          If the argument is a number instead of on/off, use that as the
          width. Otherwise, the default width is 6 characters (followed by a
          space). This may be toggled on and off dynamically using the "P"
          key command. DEFAULT= 6 (on).
 
-    "-C --colindex on/off"
+    -C --colindex on/off
          Activate or deactivate the topmost row, which is a column index.
          This may be toggled on and off dynamically using the "V" key
          command. DEFAULT=on.
 
-    "-j --justify right/left"
+    -j --justify right/left
          Set the default justification for all columns. This may be changed
-         dynamically using the "j" and "J" key commands. DEFAULT=right.
+         dynamically using the "^","$","[", and "]" key commands.
+         DEFAULT=right.
 
-    "-F --filler char"
+    -F --filler char
          Specify a filler character for any empty space on the screen.
          DEFAULT= " " (white space).
 
@@ -219,91 +221,99 @@ KEYBOARD COMMANDS
     type is autodetected depending on whether the string is surround by a //
     pair. Note that for searches, the matching text may not be visible on
     the screen if the cell is too narrow to display it. Using the 'v'
-    command should allow full visibility. Regardless, the matching cell row
-    and col are displayed in the message bar. Also note that regexps are
-    compared per cell. That is, the cell itself is viewed as 'line' rather
-    than the row as a whole. Typically, the active window aligns to the next
-    search result in the upper left corner. However, it may not do so (or
-    appear to do so) if the result appears in the frozen part of the screen.
+    command should provide full visibility where necessary. Regardless, the
+    matching cell row and col are displayed in the message bar. Also note
+    that regexps are compared per cell. That is, the cell itself is viewed
+    as a 'line' rather than the row as a whole. Typically, the active window
+    aligns to the next search result in the upper left corner. However, it
+    may not do so (or appear to do so) if the result appears in the frozen
+    part of the screen or too few rows or columns remain to fill the screen.
     Hidden columns are not searched.
 
-    "h" Print usage information and exit.
-    "l,r" Move left or right one column.
-    "a,e" Move to the far left or right.
-    "<,> " Move to the left or right one screen.
-    "y,k" Move up one line.
-    "j" Move down one line.
-    "b,u" Move up one screen.
-    "f,d,spc" Move down one screen.
-    "g,G" Move to the top or bottom of the document (note that G may take a
+    h Print usage information and exit.
+    l,r Move left or right one column.
+    a,e Move to the far left or right.
+    <,> Move to the left or right one screen.
+    y,k Move up one line.
+    j,ret Move down one line.
+    b,u Move up one screen.
+    f,d,spc Move down one screen.
+    g,G Move to the top or bottom of the document (note that G may take a
     while for a large file).
-    "C [n]" Toggle whether column n is frozen. Frozen columns appear on the
+    C [n] Toggle whether column n is frozen. Frozen columns appear on the
     left in the order in which they were frozen.
-    "C [.]" Unfreeze all columns.
-    "C [n]" Toggle whether row n is frozen. Row n must be visible (or in the
+    C [.] Unfreeze all columns.
+    C [n] Toggle whether row n is frozen. Row n must be visible (or in the
     cache) in order to freeze it (but any frozen row may be unfrozen).
     Frozen rows appear on the top in the order in which they were frozen.
-    "R [.]" Unfreeze all rows.
-    "s or / [foo]" Row-wise search. Places top-left corner at search result
+    R [.] Unfreeze all rows.
+    s or / [foo] Row-wise search. Places top-left corner at search result
     and displays the result on the message line. The search is forward and
     down from the upper left active cell (or the previous result). If foo is
     of the form /bar/ then it is interpreted as a regexp. Otherwise it is
+    treated like an ordinary string to match. Note that the / used to
+    inaugurate the command is independent of the / that starts a regexp; in
+    other words, / must be hit twice to start a regexp.
+    S or ? [foo] Column-wise search. Places top-left corner at search result
+    and displays the result on the message line. The search is down and
+    forward from the upper left active cell (or the previous result). If foo
+    is of the form /bar/ then it is interpreted as a regexp. Otherwise it is
     treated like an ordinary string to match.
-    "S or ? [foo]" Column-wise search. Places top-left corner at search
-    result and displays the result on the message line. The search is down
-    and forward from the upper left active cell (or the previous result). If
-    foo is of the form /bar/ then it is interpreted as a regexp. Otherwise
-    it is treated like an ordinary string to match.
-    "n,p" Next, previous search result for last search. "p" may also be used
+    n,p Next, previous search result for last search. "p" may also be used
     to search backwards.
-    "v [row:col]" Display the contents of the specified cell (on screen) in
+    v [row:col] Display the contents of the specified cell (on screen) in
     the message area. Useful when a cell is too small to fully display its
     contents.
-    "H [n]" Toggle hidden status of column n. Hidden columns are not shown
-    or searched and may or may not be frozen.
-    "H [.]" Unhide all columns.
-    "+ [n]" Expand width of column n by 1.
-    "- [n]" Shrink width of column n by 1. The width cannot drop below 1 (to
+    H [n] Toggle hidden status of column n. Hidden columns are not shown or
+    searched and may or may not be frozen.
+    H [.] Unhide all columns.
+    + [n] Expand width of column n by 1.
+    - [n] Shrink width of column n by 1. The width cannot drop below 1 (to
     hide the column, use 'H').
-    "+ [.]" Expand width of all columns by 1.
-    "- [.]" Shrink width of all columns by 1. The width of any column cannot
+    + [.] Expand width of all columns by 1.
+    - [.] Shrink width of all columns by 1. The width of any column cannot
     drop below 1.
-    "W [n:w]" Specify width of column n as w.
-    "W [.:w]" Specify width of all columns as w.
-    "m [c]" Mark position and label it with letter c.
-    "' [c]" Return to the position labelled with letter c.
-    "^ [n]" Justify column n to left.
-    "$ [n]" Justify column n to right.
-    "^ [.]" Justify all columns to left.
-    "$ [.]" Justify all columns to right.
-    "x" Toggle grid.
-    "z" Toggle frozen section separators.
-    "P" Toggle row index column.
-    "V" Toggle column index row.
-    "L [row:col]" Move the upper left corner of the active region to the
+    ) Expand width of all columns by 1 (same as "+ .")
+    ( Shrink width of all columns by 1 (same as "- .")
+    W [n:w] Specify width of column n as w.
+    W [.:w] Specify width of all columns as w.
+    W [w] Specify width of all columns as w (same as "W .:w")
+    m [c] Mark position and label it with letter c.
+    ' [c] Return to the position labelled with letter c.
+    ^ [n] Justify column n to left.
+    $ [n] Justify column n to right.
+    ^ [.] Justify all columns to left.
+    $ [.] Justify all columns to right.
+    [ Justify all columns to left (same as "^ .")
+    ] Justify all columns to right (same as "$ .")
+    x Toggle grid.
+    z Toggle frozen section separators.
+    P Toggle row index column.
+    V Toggle column index row.
+    L [row:col] Move the upper left corner of the active region to the
     specified row and column. If they are frozen or hidden, find a nearby
     substitute.
-    "q" Quit.
-    "Y" Resize the screen to fit the terminal. This should be done
+    q Quit.
+    Y Resize the screen to fit the terminal. This should be done
     automatically when the terminal is resized, but a command is provided in
     case a manual repaint is needed.
-    "F" Clear EOF info so that new lines added afterward can be read.
+    F Clear EOF info so that new lines added afterward can be read.
 
-    Note that the "G" and "S" commands necessarily involve a seek to the end
-    of the file and will be expensive for large files. Also, the commands
-    "s", "n", "p", and "L" may prove expensive depending on the details of
-    the file and request.
+    Note that the G and S commands necessarily involve a seek to the end of
+    the file and will be expensive for large files. Also, the commands s, n,
+    p, and L may prove expensive depending on the details of the file and
+    request.
 
 Key Summary
-     Action        Cols                 Rows
+     Action   <--Cols-->   <---------Rows---------->
      -----------------------------------------------
-     Move       a < l r > e    g b|u y|k j f|d|spc G
-     (Un)Freeze   C [n|.]              R [n|.]      
-     (Un)Hide   H [n|.]                             
-     Search     S|? [str|/str/]      s|/ [str|/str/]
+     Move    a < l r > e   g b|u y|k j|ret f|d|spc G
+     (Un)Freeze  C [n|.]            R [n|.]         
+     (Un)Hide    H [n|.]                            
+     Search  S|? [str|/str/]      s|/ [str|/str/]   
      -----------------------------------------------
-     Col width:  +/-[n|.]   W[n:m]    W[.:m]        
-     Cell just (lft|rgt):   ^|$ [n|.]               
+     Col width:  +/-[n|.]  ( )   W[n:w] W[.:w] W[w]
+     Cell just (lft|rgt):   ^|$ [n|.]    [  ]       
      Mark set|recover:      m|' [c]                 
      Cell: L[row:col] (goto) v[row:col] (disp)      
      General: q(quit) h(hlp) Y(draw) F(rsteof)      
@@ -313,17 +323,17 @@ Key Summary
 EXAMPLES
     Parse csv file: tless -c -f foo.csv
 
-    Parse tab-delimited: cat foo.txt | tless -s "\\t" -a
+    Parse tab-delimited: tless -f foo.txt -s "" -t -a
 
-    Parse white-space separated columns: cat foo.txt | tless -d " \\t" -a
+    Parse white-space separated columns: tless -f foo.txt -d " " -t -a
 
-    Parse left-justified fixed width columns: tless -f foo.txt -j left
-    -x:10:20:30:40:50:65
+    Parse left-justified fixed-width columns: tless -f foo.txt -j left
+    -x:10:10:15:8:15:6
 
     Parse ':' separated columns that are all the same width: tless -f
     foo.txt -d ":" -w 15
 
-    A simple setup tless -f foo.txt -X "x y C:0 R:0 L:24:10"
+    A simple setup tless -f foo.txt -X "C:0 R:0 L:24:10"
 
 EXIT STATUS
     tless returns a zero exit status. It restores the terminal on exit.

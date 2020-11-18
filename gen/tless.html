@@ -4,99 +4,121 @@
 <head>
 <title>tless - Quick Viewer for text files of tabular data</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rev="made" href="mailto:khalpern@ken-macbook-pro.nonet" />
+<link rev="made" href="mailto:nixbld@localhost.nonet" />
 </head>
 
-<body style="background-color: white">
+<body>
 
 
-<!-- INDEX BEGIN -->
-<div name="index">
-<p><a name="__index__"></a></p>
 
-<ul>
-
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#screen_layout">SCREEN LAYOUT</a></li>
-	<li><a href="#options">OPTIONS</a></li>
-	<ul>
-
-		<li><a href="#general">General</a></li>
-		<li><a href="#parsing">Parsing</a></li>
-		<li><a href="#display">Display</a></li>
-	</ul>
-
-	<li><a href="#keyboard_commands">KEYBOARD COMMANDS</a></li>
-	<li><a href="#key_summary">Key Summary</a></li>
-	<li><a href="#examples">EXAMPLES</a></li>
-	<li><a href="#exit_status">EXIT STATUS</a></li>
-	<li><a href="#author">AUTHOR</a></li>
-	<li><a href="#license">LICENSE</a></li>
-	<li><a href="#see_also">SEE ALSO</a></li>
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SCREEN-LAYOUT">SCREEN LAYOUT</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a>
+    <ul>
+      <li><a href="#General">General</a></li>
+      <li><a href="#Parsing">Parsing</a></li>
+      <li><a href="#Display">Display</a></li>
+    </ul>
+  </li>
+  <li><a href="#KEYBOARD-COMMANDS">KEYBOARD COMMANDS</a></li>
+  <li><a href="#Key-Summary">Key Summary</a></li>
+  <li><a href="#EXAMPLES">EXAMPLES</a></li>
+  <li><a href="#EXIT-STATUS">EXIT STATUS</a></li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#LICENSE">LICENSE</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
 </ul>
 
-<hr name="index" />
-</div>
-<!-- INDEX END -->
+<h1 id="NAME">NAME</h1>
 
-<p>
-</p>
-<h1><a name="name">NAME</a></h1>
 <p>tless - Quick Viewer for text files of tabular data</p>
-<p>
-</p>
-<hr />
-<h1><a name="synopsis">SYNOPSIS</a></h1>
-<p><strong>tless [-f inputfile] [options] [-X &quot;Key Commands&quot;]</strong></p>
-<p>
-</p>
-<hr />
-<h1><a name="description">DESCRIPTION</a></h1>
-<p>Tless is a utility to quickly view tabular text data.  It was inspired by 'less' and acts in a similar capacity for tables.  To this end, it offers several essential features.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>tless [-f inputfile] [options] [-X &quot;Key Commands&quot;]</b></p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Tless is a utility to quickly view tabular text data. It was inspired by &#39;less&#39; and acts in a similar capacity for tables. To this end, it offers several essential features.</p>
+
 <dl>
-<dt><strong><a name="columns_tless_is_aware_of_the_concept_of_a_table_column_and_operates_in_two_dimensions_instead_of_just_one_accordingly_it_allows_convenient_movement_and_searches_using_both_rows_and_columns" class="item"><strong>Columns</strong>: 
-Tless is aware of the concept of a table &quot;column&quot; and operates in two dimensions instead of just one.  Accordingly, it allows convenient movement and searches using both rows and columns.</a></strong></dt>
 
-<dt>
-<dt><strong><a name="parsing_rows_are_parsed_on_the_fly_in_a_customizable_manner_the_input_may_be_delimited_fixed_width_or_csv" class="item"><strong>Parsing</strong>: 
-Rows are parsed on the fly in a customizable manner.  The input may be delimited, fixed width, or csv.</a></strong></dt>
+<dt id="Columns:-Tless-is-aware-of-the-concept-of-a-table-column-and-operates-in-two-dimensions-instead-of-just-one.-Accordingly-it-allows-convenient-movement-and-searches-using-both-rows-and-columns"><b>Columns</b>: Tless is aware of the concept of a table &quot;column&quot; and operates in two dimensions instead of just one. Accordingly, it allows convenient movement and searches using both rows and columns.</dt>
+<dd>
 
-<dt>
-<dt><strong><a name="these" class="item"><strong>Synchronized Scrolling</strong>:  
-Rows and columns may be frozen and unfrozen dynamically.  Tless performs synchronized scrolling with these (frozen columns only scroll vertically and frozen rows only scroll horizontally).  This allows a user to scan through a large file of data, both horizontally and vertically, without losing sight of any header rows or index columns.  Because the frozen rows and columns need not be consecutive, Tless offers more flexibility than a typical split-screen application.</a></strong></dt>
+</dd>
+<dt id=""></dt>
+<dd>
 
-<dt>
-<dt><strong><a name="files" class="item"><strong>Lightweight</strong>: 
-Tless examines a file locally and uses a caching mechanism.  Like 'less', it can be used to view very large files (in both directions) with minimal start-up time, performance loss, or memory foot-print.  It uses curses and is a terminal application for both portability and speed.</a></strong></dt>
+</dd>
+<dt id="Parsing:-Rows-are-parsed-on-the-fly-in-a-customizable-manner.-The-input-may-be-delimited-fixed-width-or-csv"><b>Parsing</b>: Rows are parsed on the fly in a customizable manner. The input may be delimited, fixed width, or csv.</dt>
+<dd>
 
-<dt>
+</dd>
+<dt id="1"></dt>
+<dd>
+
+</dd>
+<dt id="Synchronized-Scrolling:-Rows-and-columns-may-be-frozen-and-unfrozen-dynamically.-Tless-performs-synchronized-scrolling-with-these-frozen-columns-only-scroll-vertically-and-frozen-rows-only-scroll-horizontally-.-This-allows-a-user-to-scan-through-a-large-file-of-data-both-horizontally-and-vertically-without-losing-sight-of-any-header-rows-or-index-columns.-Because-the-frozen-rows-and-columns-need-not-be-consecutive-Tless-offers-more-flexibility-than-a-typical-split-screen-application"><b>Synchronized Scrolling</b>: Rows and columns may be frozen and unfrozen dynamically. Tless performs synchronized scrolling with these (frozen columns only scroll vertically and frozen rows only scroll horizontally). This allows a user to scan through a large file of data, both horizontally and vertically, without losing sight of any header rows or index columns. Because the frozen rows and columns need not be consecutive, Tless offers more flexibility than a typical split-screen application.</dt>
+<dd>
+
+</dd>
+<dt id="2"></dt>
+<dd>
+
+</dd>
+<dt id="Lightweight:-Tless-examines-a-file-locally-and-uses-a-caching-mechanism.-Like-less-it-can-be-used-to-view-very-large-files-in-both-directions-with-minimal-start-up-time-performance-loss-or-memory-foot-print.-It-uses-curses-and-is-a-terminal-application-for-both-portability-and-speed"><b>Lightweight</b>: Tless examines a file locally and uses a caching mechanism. Like &#39;less&#39;, it can be used to view very large files (in both directions) with minimal start-up time, performance loss, or memory foot-print. It uses curses and is a terminal application for both portability and speed.</dt>
+<dd>
+
+</dd>
+<dt id="3"></dt>
+<dd>
+
+</dd>
 </dl>
-<p>Note that tless is a viewing utility. Although it provides basic search functionality, it is not a spreadsheet or database and allows no editing, calculation, or DB style queries.  It can be thought of as a lightweight two dimensional data viewer.</p>
-<p>
-</p>
-<hr />
-<h1><a name="screen_layout">SCREEN LAYOUT</a></h1>
+
+<p>Note that tless is a viewing utility. Although it provides basic search functionality, it is not a spreadsheet or database and allows no editing, calculation, or DB style queries. It can be thought of as a lightweight two dimensional data viewer.</p>
+
+<h1 id="SCREEN-LAYOUT">SCREEN LAYOUT</h1>
+
 <p>The screen is broken into several portions, some of which may not be visible at any given time.</p>
+
 <dl>
-<dt><strong><a name="row_index_the_leftmost_column_displays_the_row_number_in_the_file_this_may_be_turned_on_or_off_dynamically" class="item"><strong>Row Index</strong>: The leftmost column displays the row number in the file.  This may be turned on or off dynamically.</a></strong></dt>
 
-<dt><strong><a name="frozen_columns_next_from_the_left_are_any_frozen_columns_in_the_order_in_which_they_were_frozen_by_the_user_these_only_scroll_vertically_and_may_be_added_or_removed_dynamically" class="item"><strong>Frozen Columns</strong>: Next from the left are any frozen columns in the order in which they were frozen by the user.  These only scroll vertically and may be added or removed dynamically.</a></strong></dt>
+<dt id="Row-Index:-The-leftmost-column-displays-the-row-number-in-the-file.-This-may-be-turned-on-or-off-dynamically"><b>Row Index</b>: The leftmost column displays the row number in the file. This may be turned on or off dynamically.</dt>
+<dd>
 
-<dt><strong><a name="column_index_the_topmost_row_displays_the_column_numbers_this_may_be_turned_on_or_off_dynamically" class="item"><strong>Column Index</strong>: The topmost row displays the column numbers.  This may be turned on or off dynamically.</a></strong></dt>
+</dd>
+<dt id="Frozen-Columns:-Next-from-the-left-are-any-frozen-columns-in-the-order-in-which-they-were-frozen-by-the-user.-These-only-scroll-vertically-and-may-be-added-or-removed-dynamically"><b>Frozen Columns</b>: Next from the left are any frozen columns in the order in which they were frozen by the user. These only scroll vertically and may be added or removed dynamically.</dt>
+<dd>
 
-<dt><strong><a name="frozen_rows_next_down_are_any_frozen_rows_in_the_order_in_which_they_were_frozen_by_the_user_these_only_scroll_horizontally_and_may_be_added_or_removed_dynamically" class="item"><strong>Frozen Rows</strong>: Next down are any frozen rows in the order in which they were frozen by the user.  These only scroll horizontally and may be added or removed dynamically.</a></strong></dt>
+</dd>
+<dt id="Column-Index:-The-topmost-row-displays-the-column-numbers.-This-may-be-turned-on-or-off-dynamically"><b>Column Index</b>: The topmost row displays the column numbers. This may be turned on or off dynamically.</dt>
+<dd>
 
-<dt><strong><a name="message_line_the_bottom_row_is_for_commands_and_messages" class="item"><strong>Message Line</strong>: The bottom row is for commands and messages.</a></strong></dt>
+</dd>
+<dt id="Frozen-Rows:-Next-down-are-any-frozen-rows-in-the-order-in-which-they-were-frozen-by-the-user.-These-only-scroll-horizontally-and-may-be-added-or-removed-dynamically"><b>Frozen Rows</b>: Next down are any frozen rows in the order in which they were frozen by the user. These only scroll horizontally and may be added or removed dynamically.</dt>
+<dd>
 
-<dt><strong><a name="active_region_the_remainder_of_the_columns_and_rows_are_active_and_scroll_both_horizontally_and_vertically_this_is_a_window_into_the_file" class="item"><strong>Active Region</strong>: The remainder of the columns and rows are &quot;active&quot; and scroll both horizontally and vertically.  This is a window into the file.</a></strong></dt>
+</dd>
+<dt id="Message-Line:-The-bottom-row-is-for-commands-and-messages"><b>Message Line</b>: The bottom row is for commands and messages.</dt>
+<dd>
 
-<dt><strong><a name="frozen_cells_note_that_in_the_upper_left_region_if_both_rows_and_columns_are_frozen_there_will_be_an_overlap_which_doesn_t_scroll_in_either_direction" class="item"><strong>Frozen Cells</strong>: Note that in the upper left region, if both rows and columns are frozen there will be an overlap which doesn't scroll in either direction.</a></strong></dt>
+</dd>
+<dt id="Active-Region:-The-remainder-of-the-columns-and-rows-are-active-and-scroll-both-horizontally-and-vertically.-This-is-a-window-into-the-file"><b>Active Region</b>: The remainder of the columns and rows are &quot;active&quot; and scroll both horizontally and vertically. This is a window into the file.</dt>
+<dd>
 
+</dd>
+<dt id="Frozen-Cells:-Note-that-in-the-upper-left-region-if-both-rows-and-columns-are-frozen-there-will-be-an-overlap-which-doesnt-scroll-in-either-direction"><b>Frozen Cells</b>: Note that in the upper left region, if both rows and columns are frozen there will be an overlap which doesn&#39;t scroll in either direction.</dt>
+<dd>
+
+</dd>
 </dl>
-<pre>
-  1= rowidx   3= colidx  5= msgbar   6= active
+
+<pre><code>  1= rowidx   3= colidx  5= msgbar   6= active
   2= frozencols  4= frozenrows   7= frozenboth
  ...............................................
  .   3333|3333#3333|3333|3333|3333|3333|3333|33.
@@ -112,303 +134,428 @@ Tless examines a file locally and uses a caching mechanism.  Like 'less', it can
  . 1 2222|2222#6666|6666|6666|6666|6666|6666|66.
  . 1 2222|2222#6666|6666|6666|6666|6666|6666|66.
  .555555555555555555555555555555555555555555555.
- ...............................................</pre>
-<p>
-</p>
-<hr />
-<h1><a name="options">OPTIONS</a></h1>
-<p>Note that in some cases the order of options makes a difference.  In particular, any default justification should be set before fixed columns are specified.  Also, some options only are valid in the context of others.  Sometimes invalid options are ignored, but if ambiguous or indicative of user error they may cause the program to exit.</p>
-<p>
-</p>
-<h2><a name="general">General</a></h2>
-<dl>
-<dt><strong><a name="h_help" class="item"><code>-h  --help</code></a></strong></dt>
+ ...............................................</code></pre>
 
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<p>Note that in some cases the order of options makes a difference. In particular, any default justification should be set before fixed columns are specified. Also, some options only are valid in the context of others. Sometimes invalid options are ignored, but if ambiguous or indicative of user error they may cause the program to exit.</p>
+
+<h2 id="General">General</h2>
+
+<dl>
+
+<dt id="h---help"><b>-h --help</b></dt>
 <dd>
+
 <p>Display usage information.</p>
-</dd>
-<dt><strong><a name="v_version" class="item"><code>-v  --version</code></a></strong></dt>
 
+</dd>
+<dt id="v---version"><b>-v --version</b></dt>
 <dd>
+
 <p>Display version number.</p>
-</dd>
-<dt><strong><a name="f_file_filename" class="item"><code>-f  --file filename</code></a></strong></dt>
 
-<dd>
-<p>Specify an input file.  At this time, reading from stdin is not supported.</p>
 </dd>
-<dt><strong><a name="z_cache_n" class="item"><code>-z  --cache n</code></a></strong></dt>
-
+<dt id="f---file-filename"><b>-f --file filename</b></dt>
 <dd>
-<p>Specify a cache size.  The maximal cache size will be 3x this because front and end caches are also used. DEFAULT=10000.</p>
+
+<p>Specify an input file. At this time, reading from stdin is not supported.</p>
+
 </dd>
-<dt><strong><a name="x_exec_cmds" class="item"><code>-X  --exec &quot;cmds&quot;</code></a></strong></dt>
-
+<dt id="z---cache-n"><b>-z --cache n</b></dt>
 <dd>
-<p>Execute a series of key commands once initialized.  The commands are space delimited and each has either the form 'c' or 'c:arg:arg:...' where c is the key for the command and any arguments are those that would be typed after them.</p>
+
+<p>Specify a cache size. The maximal cache size will be 3x this because front and end caches are also used. DEFAULT=10000.</p>
+
+</dd>
+<dt id="X---exec-cmds"><b>-X --exec &quot;cmds&quot;</b></dt>
+<dd>
+
+<p>Execute a series of key commands once initialized. The commands are space delimited and each has either the form &#39;c&#39; or &#39;c:arg:arg:...&#39; where c is the key for the command and any arguments are those that would be typed after them.</p>
+
 </dd>
 </dl>
-<p>
-</p>
-<h2><a name="parsing">Parsing</a></h2>
+
+<h2 id="Parsing">Parsing</h2>
+
 <p>Only one of --delim, --sdelim, --csv, or --fixed may be used.</p>
-<p>WARNING:  If escaped chars like \t appear in the argument to --delim or --sdelim then one must be wary of the shell.  For example, in bash, one would write  --sdelim $'\t ' to delimit with tab and space.</p>
+
+<p>WARNING: If escaped chars like \t appear in the argument to --delim or --sdelim then one must be wary of the shell. For example, in bash one could write --sdelim $&#39;\t &#39; to delimit with tab and space. It is best to use the -t option to avoid shell issues and promote portability.</p>
+
 <dl>
-<dt><strong><a name="d_delim_string" class="item"><code>-d  --delim string</code></a></strong></dt>
 
-<dt><strong><a name="s_sdelim_string" class="item"><code>-s  --sdelim string</code></a></strong></dt>
-
+<dt id="d---delim-string"><b>-d --delim string</b></dt>
 <dd>
-<p>The file will be parsed using the specified characters as delimiters.  For --delim, Adjacent delimiters are merged while for --sdelim they are not.    DEFAULT=  tab and space.</p>
+
 </dd>
-<dt><strong><a name="t" class="item"><code>-t</code></a></strong></dt>
-
+<dt id="s---sdelim-string"><b>-s --sdelim string</b></dt>
 <dd>
-<p>Add a tab to the delimiter string.  Some shell scripts make it a huge pain to pass a tab to the program.  If that is the case, this may be used instead.  It adds to the string so other characters may be included in the -d or -s options as well.  To parse only with tabs, use  -s '' -t or something similar.  Note that -t implies -d if no -d or -s option is explicitly specified.</p>
+
+<p>The file will be parsed using the specified characters as delimiters. With --delim adjacent delimiters are merged, while with --sdelim they are not. DEFAULT= --delim with tab and space.</p>
+
 </dd>
-<dt><strong><a name="c_csv" class="item"><code>-c  --csv</code></a></strong></dt>
-
+<dt id="t"><b>-t</b></dt>
 <dd>
-<p>The file will be parsed according to the csv specification.  NOTE: At present, this is a simplified parser.  It does not allow for arbitrary csv files.  It allows &quot;&quot; or non-&quot;&quot; around field, and allows ,'s inside of &quot;&quot; but nothing more complex than this.</p>
+
+<p>Add a tab to the delimiter string. Some shells make it challenging to pass a tab to the program. If that is the case, this may be used instead. If -d or -s is used as well, tab is added as a delimiter to the existing choices. If not, then -d is implied. To parse only with single tabs, use -s &#39;&#39; -t or something similar. The -t option must follow any -d or -s options.</p>
+
 </dd>
-<dt><strong><a name="x_fixed_wid1_wid2_wid3" class="item"><code>-x  --fixed wid1:wid2:wid3:...</code></a></strong></dt>
-
+<dt id="c---csv"><b>-c --csv</b></dt>
 <dd>
+
+<p>The file will be parsed according to the csv specification. NOTE: At present, this is a simplified parser. It allows quoted or non-quoted fields and can accommodate embedded ,&#39;s inside of quoted fields -- but nothing more complex than this.</p>
+
+</dd>
+<dt id="x---fixed-wid1:wid2:wid3"><b>-x --fixed wid1:wid2:wid3:...</b></dt>
+<dd>
+
 <p>The file will be parsed using the specified fixed column widths.</p>
-</dd>
-<dt><strong><a name="l_ignoreleading_on_off" class="item"><code>-l  --ignoreleading on/off</code></a></strong></dt>
 
-<dd>
-<p>Ignore leading delimiters.  This eliminates misalignments due to some rows starting on a delimiter and some not.  DEFAULT=on.</p>
 </dd>
-<dt><strong><a name="y_doseol" class="item"><code>-y  --doseol</code></a></strong></dt>
-
+<dt id="l---ignoreleading-on-off"><b>-l --ignoreleading on/off</b></dt>
 <dd>
-<p>Assume DOS-style end of line ('\r').</p>
+
+<p>Ignore leading delimiters. This eliminates misalignments due to some rows starting on a delimiter and some not. DEFAULT=on.</p>
+
 </dd>
-<dt><strong><a name="e_eol_char" class="item"><code>-e  --eol char</code></a></strong></dt>
-
+<dt id="e---eol-char"><b>-e --eol char</b></dt>
 <dd>
-<p>Assume this specific char marks the end of line.  If 0 then either $\n$ or $\r$ will match.  Note that null always matches and that adjacent eols yield separate lines and are not merged. DEFAULT= 0 ('\n' or '\r').</p>
+
+<p>Use the specified character as the end of line marker in the file. If unset, then any of \n, \r, or \r\n will match. Note that null always matches and that adjacent eols (except \r\n) yield separate lines and are not merged.</p>
+
 </dd>
-<dt><strong><a name="m_maxcols_n" class="item"><code>-M  --maxcols n</code></a></strong></dt>
-
+<dt id="M---maxcols-n"><b>-M --maxcols n</b></dt>
 <dd>
-<p>Specify a maximum number of columns to parse and display.  Any additional columns are ignored.</p>
+
+<p>Specify a maximum number of columns to parse and display. Any additional columns are ignored.</p>
+
 </dd>
-<dt><strong><a name="q_removequotes" class="item"><code>-Q  --removequotes</code></a></strong></dt>
-
+<dt id="Q---removequotes"><b>-Q --removequotes</b></dt>
 <dd>
-<p>Strip outer double-quotes (&quot;&quot;) if they are present for each field.  The quotes are only stripped from a field if they appear as a pair.</p>
+
+<p>Strip outer double-quotes (&quot;&quot;) if they are present for each field. The quotes are only stripped from a field if they appear as a pair. Note that this is automatic with --csv.</p>
+
 </dd>
-<dt><strong><a name="k_skip_n" class="item"><code>-k  --skip n</code></a></strong></dt>
-
+<dt id="k---skip-n"><b>-k --skip n</b></dt>
 <dd>
+
 <p>Skip the first n rows of the file for all purposes.</p>
-</dd>
-<dt><strong><a name="m_allowexpansion" class="item"><code>-m  --allowexpansion</code></a></strong></dt>
 
+</dd>
+<dt id="m---allowexpansion"><b>-m --allowexpansion</b></dt>
 <dd>
-<p>Allow the file to expand while in use.  The reason this must be specified is that a file without a terminal eol would lose the last line if we allow expansion (because we must hold off processing any line without an eol until it is complete).</p>
+
+<p>Allow the file to expand while in use. The reason this must be specified is that a file without a terminal eol would lose the last line if we allow expansion (because we must hold off processing any line without an eol until it is complete).</p>
+
 </dd>
 </dl>
-<p>
-</p>
-<h2><a name="display">Display</a></h2>
+
+<h2 id="Display">Display</h2>
+
 <dl>
-<dt><strong><a name="a_aligntofirst" class="item"><code>-a  --aligntofirst</code></a></strong></dt>
 
+<dt id="a---aligntofirst"><b>-a --aligntofirst</b></dt>
 <dd>
-<p>Use the specified delimiters to set the column widths to those in the first row (or first non-skipped row). Only for use with --delim and --sdelim.  Note that this may lead to visually unappealing results if the first row is a header with headings that are smaller than the data entries below them (but this may always be corrected using the key commands &quot;+&quot;, &quot;-&quot;, and &quot;W&quot;).</p>
+
+<p>Use the specified delimiters to set the column widths to those in the first row (or first non-skipped row). Not for use with --fixed. Note that this may lead to visually unappealing results if the first row is a header with headings that are smaller than the data entries below them. This may be corrected using the key commands &quot;+&quot;, &quot;-&quot;,&quot;(&quot;,&quot;)&quot;, and &quot;W&quot; as appropriate.</p>
+
 </dd>
-<dt><strong><a name="w_defwidth_n" class="item"><code>-w  --defwidth n</code></a></strong></dt>
-
+<dt id="w---defwidth-n"><b>-w --defwidth n</b></dt>
 <dd>
-<pre>
 
-Set the column width for all columns to n.  DEFAULT=12.</pre>
+<p>Set the column width for all columns to n. DEFAULT=12.</p>
+
 </dd>
-<dt><strong><a name="g_grid_c" class="item"><code>-G  --grid [c]</code></a></strong></dt>
-
+<dt id="G---grid-c"><b>-G --grid [c]</b></dt>
 <dd>
-<p>Display separators between columns.  If 'c' is specified, use that character as the separator.  Otherwise, &quot;|&quot; is the default. Note that the grid may be turned on and off dynamically as well (see key command &quot;x&quot;).</p>
+
+<p>Toggle display separators between columns. The default is ON with &#39;|&#39; as the separator. If &#39;c&#39; is specified, use that character as the separator and keep the grid on. Otherwise, turn it off. Note that the grid may be turned on and off dynamically as well (see key command &quot;x&quot;).</p>
+
 </dd>
-<dt><strong><a name="s_seps_c" class="item"><code>-S  --seps [c]</code></a></strong></dt>
-
+<dt id="S---seps-c"><b>-S --seps [c]</b></dt>
 <dd>
-<p>Display separators between the frozen rows/cols and the active portion of the screen.  If 'c' is specified, use that character as the separator.  Otherwise, the default is &quot;#&quot;.  The separators may be toggled on and off dynamically as well (see key command &quot;y&quot;).</p>
+
+<p>Toggle display separators between the frozen rows/cols and the active portion of the screen. The default is ON with &#39;#&#39; as the separator. If &#39;c&#39; is specified, use that character as the separator and keep it on. Otherwise, turn it off. The separators may be toggled on and off dynamically as well (see key command &quot;z&quot;).</p>
+
 </dd>
-<dt><strong><a name="r_rowindex_on_off_n" class="item"><code>-R  --rowindex on/off/n</code></a></strong></dt>
-
+<dt id="R---rowindex-on-off-n"><b>-R --rowindex on/off/n</b></dt>
 <dd>
-<p>Activate or deactivate the leftmost column, which is a row index.  If the argument is a number instead of on/off, use that as the width.  Otherwise, the default width is 6 characters (followed by a space).  This may be toggled on and off dynamically using the &quot;P&quot; key command.  DEFAULT= 6 (on).</p>
+
+<p>Activate or deactivate the leftmost column, which is a row index. If the argument is a number instead of on/off, use that as the width. Otherwise, the default width is 6 characters (followed by a space). This may be toggled on and off dynamically using the &quot;P&quot; key command. DEFAULT= 6 (on).</p>
+
 </dd>
-<dt><strong><a name="c_colindex_on_off" class="item"><code>-C  --colindex on/off</code></a></strong></dt>
-
+<dt id="C---colindex-on-off"><b>-C --colindex on/off</b></dt>
 <dd>
-<p>Activate or deactivate the topmost row, which is a column index.  This may be toggled on and off dynamically using the &quot;V&quot; key command.  DEFAULT=on.</p>
+
+<p>Activate or deactivate the topmost row, which is a column index. This may be toggled on and off dynamically using the &quot;V&quot; key command. DEFAULT=on.</p>
+
 </dd>
-<dt><strong><a name="j_justify_right_left" class="item"><code>-j  --justify right/left</code></a></strong></dt>
-
+<dt id="j---justify-right-left"><b>-j --justify right/left</b></dt>
 <dd>
-<p>Set the default justification for all columns.  This may be changed dynamically using the &quot;j&quot; and &quot;J&quot; key commands.  DEFAULT=right.</p>
+
+<p>Set the default justification for all columns. This may be changed dynamically using the &quot;^&quot;,&quot;$&quot;,&quot;[&quot;, and &quot;]&quot; key commands. DEFAULT=right.</p>
+
 </dd>
-<dt><strong><a name="f_filler_char" class="item"><code>-F  --filler char</code></a></strong></dt>
-
+<dt id="F---filler-char"><b>-F --filler char</b></dt>
 <dd>
-<p>Specify a filler character for any empty space on the screen.  DEFAULT= &quot; &quot; (white space).</p>
+
+<p>Specify a filler character for any empty space on the screen. DEFAULT= &quot; &quot; (white space).</p>
+
 </dd>
 </dl>
-<p>
-</p>
-<hr />
-<h1><a name="keyboard_commands">KEYBOARD COMMANDS</a></h1>
-<p>The following keys perform actions while running.  Those with [foo] after them indicate a required argument (as opposed to the option section where it indicated an optional argument).  This is input on the command line (the bottom line of the terminal) followed by enter.  Note that the number of columns may grow if the document width changes).  The movement commands only affect the active region.</p>
-<p>Searches may either be ordinary (simple text matching) or regexps.  The type is autodetected depending on whether the string is surround by a // pair.   Note that for searches, the matching text may not be visible on the screen if the cell is too narrow to display it.  Using the 'v' command should allow full visibility.  Regardless, the matching cell row and col are displayed in the message bar.  Also note that regexps are compared per cell.  That is, the cell itself is viewed as 'line' rather than the row as a whole.  Typically, the active window aligns to the next search result in the upper left corner.  However, it may not do so (or appear to do so) if the result appears in the frozen part of the screen.  Hidden columns are not searched.</p>
+
+<h1 id="KEYBOARD-COMMANDS">KEYBOARD COMMANDS</h1>
+
+<p>The following keys perform actions while running. Those with [foo] after them indicate a required argument (as opposed to the option section where it indicated an optional argument). This is input on the command line (the bottom line of the terminal) followed by enter. Note that the number of columns may grow if the document width changes). The movement commands only affect the active region.</p>
+
+<p>Searches may either be ordinary (simple text matching) or regexps. The type is autodetected depending on whether the string is surround by a // pair. Note that for searches, the matching text may not be visible on the screen if the cell is too narrow to display it. Using the &#39;v&#39; command should provide full visibility where necessary. Regardless, the matching cell row and col are displayed in the message bar. Also note that regexps are compared per cell. That is, the cell itself is viewed as a &#39;line&#39; rather than the row as a whole. Typically, the active window aligns to the next search result in the upper left corner. However, it may not do so (or appear to do so) if the result appears in the frozen part of the screen or too few rows or columns remain to fill the screen. Hidden columns are not searched.</p>
+
 <dl>
-<dt><strong><a name="h_print_usage_information_and_exit" class="item"><code>h</code>			Print usage information and exit.</a></strong></dt>
 
-<dt><strong><a name="l_r_move_left_or_right_one_column" class="item"><code>l,r</code>			Move left or right one column.</a></strong></dt>
+<dt id="h-Print-usage-information-and-exit"><b>h</b> Print usage information and exit.</dt>
+<dd>
 
-<dt><strong><a name="a_e_move_to_the_far_left_or_right" class="item"><code>a,e</code>			Move to the far left or right.</a></strong></dt>
+</dd>
+<dt id="l-r-Move-left-or-right-one-column"><b>l,r</b> Move left or right one column.</dt>
+<dd>
 
-<dt><strong><a name="move_to_the_left_or_right_one_screen" class="item"><code>&lt;,&gt; </code>			Move to the left or right one screen.</a></strong></dt>
+</dd>
+<dt id="a-e-Move-to-the-far-left-or-right"><b>a,e</b> Move to the far left or right.</dt>
+<dd>
 
-<dt><strong><a name="y_k_move_up_one_line" class="item"><code>y,k</code>			Move up one line.</a></strong></dt>
+</dd>
+<dt id="Move-to-the-left-or-right-one-screen"><b>&lt;,&gt; </b> Move to the left or right one screen.</dt>
+<dd>
 
-<dt><strong><a name="j_move_down_one_line" class="item"><code>j</code>			Move down one line.</a></strong></dt>
+</dd>
+<dt id="y-k-Move-up-one-line"><b>y,k</b> Move up one line.</dt>
+<dd>
 
-<dt><strong><a name="b_u_move_up_one_screen" class="item"><code>b,u</code>			Move up one screen.</a></strong></dt>
+</dd>
+<dt id="j-ret-Move-down-one-line"><b>j,ret</b> Move down one line.</dt>
+<dd>
 
-<dt><strong><a name="f_d_spc_move_down_one_screen" class="item"><code>f,d,spc</code>		Move down one screen.</a></strong></dt>
+</dd>
+<dt id="b-u-Move-up-one-screen"><b>b,u</b> Move up one screen.</dt>
+<dd>
 
-<dt><strong><a name="document" class="item"><code>g,G</code>			Move to the top or bottom of the document (note that G may take a while for a large file).</a></strong></dt>
+</dd>
+<dt id="f-d-spc-Move-down-one-screen"><b>f,d,spc</b> Move down one screen.</dt>
+<dd>
 
-<dt><strong><a name="c_n_toggle_whether_column_n_is_frozen_frozen_columns_appear_on_the_left_in_the_order_in_which_they_were_frozen" class="item"><code>C [n]</code>			Toggle whether column n is frozen.  Frozen columns appear on the left in the order in which they were frozen.</a></strong></dt>
+</dd>
+<dt id="g-G-Move-to-the-top-or-bottom-of-the-document-note-that-G-may-take-a-while-for-a-large-file"><b>g,G</b> Move to the top or bottom of the document (note that G may take a while for a large file).</dt>
+<dd>
 
-<dt><strong><a name="c_unfreeze_all_columns" class="item"><code>C [.]</code>			Unfreeze all columns.</a></strong></dt>
+</dd>
+<dt id="C-n-Toggle-whether-column-n-is-frozen.-Frozen-columns-appear-on-the-left-in-the-order-in-which-they-were-frozen"><b>C [n]</b> Toggle whether column n is frozen. Frozen columns appear on the left in the order in which they were frozen.</dt>
+<dd>
 
-<dt><strong><a name="visible" class="item"><code>C [n]</code>			Toggle whether row n is frozen.  Row n must be visible (or in the cache) in order to freeze it (but any frozen row may be unfrozen).  Frozen rows appear on the top in the order in which they were frozen.</a></strong></dt>
+</dd>
+<dt id="C-.-Unfreeze-all-columns"><b>C [.]</b> Unfreeze all columns.</dt>
+<dd>
 
-<dt><strong><a name="r_unfreeze_all_rows" class="item"><code>R [.]</code>			Unfreeze all rows.</a></strong></dt>
+</dd>
+<dt id="C-n-Toggle-whether-row-n-is-frozen.-Row-n-must-be-visible-or-in-the-cache-in-order-to-freeze-it-but-any-frozen-row-may-be-unfrozen-.-Frozen-rows-appear-on-the-top-in-the-order-in-which-they-were-frozen"><b>C [n]</b> Toggle whether row n is frozen. Row n must be visible (or in the cache) in order to freeze it (but any frozen row may be unfrozen). Frozen rows appear on the top in the order in which they were frozen.</dt>
+<dd>
 
-<dt><strong><a name="cell" class="item"><code>s or / [foo]</code>	Row-wise search.  Places top-left corner at search result and displays the result on the message line.  The search is forward and down from the upper left active cell (or the previous result).  If foo is of the form /bar/ then it is interpreted as a regexp.  Otherwise it is treated like an ordinary string to match.</a></strong></dt>
+</dd>
+<dt id="R-.-Unfreeze-all-rows"><b>R [.]</b> Unfreeze all rows.</dt>
+<dd>
 
-<dt><strong><code>S or ? [foo]</code>	Column-wise search.  Places top-left corner at search result and displays the result on the message line.  The search is down and forward from the upper left active cell (or the previous result).  If foo is of the form /bar/ then it is interpreted as a regexp.  Otherwise it is treated like an ordinary string to match.</strong></dt>
+</dd>
+<dt id="s-or-foo-Row-wise-search.-Places-top-left-corner-at-search-result-and-displays-the-result-on-the-message-line.-The-search-is-forward-and-down-from-the-upper-left-active-cell-or-the-previous-result-.-If-foo-is-of-the-form-bar-then-it-is-interpreted-as-a-regexp.-Otherwise-it-is-treated-like-an-ordinary-string-to-match.-Note-that-the-used-to-inaugurate-the-command-is-independent-of-the-that-starts-a-regexp-in-other-words-must-be-hit-twice-to-start-a-regexp"><b>s or / [foo]</b> Row-wise search. Places top-left corner at search result and displays the result on the message line. The search is forward and down from the upper left active cell (or the previous result). If foo is of the form /bar/ then it is interpreted as a regexp. Otherwise it is treated like an ordinary string to match. Note that the / used to inaugurate the command is independent of the / that starts a regexp; in other words, / must be hit twice to start a regexp.</dt>
+<dd>
 
-<dt><strong><a name="n_p_next_previous_search_result_for_last_search_p_may_also_be_used_to_search_backwards" class="item"><code>n,p</code>			Next, previous search result for last search.  &quot;p&quot; may also be used to search backwards.</a></strong></dt>
+</dd>
+<dt id="S-or-foo-Column-wise-search.-Places-top-left-corner-at-search-result-and-displays-the-result-on-the-message-line.-The-search-is-down-and-forward-from-the-upper-left-active-cell-or-the-previous-result-.-If-foo-is-of-the-form-bar-then-it-is-interpreted-as-a-regexp.-Otherwise-it-is-treated-like-an-ordinary-string-to-match"><b>S or ? [foo]</b> Column-wise search. Places top-left corner at search result and displays the result on the message line. The search is down and forward from the upper left active cell (or the previous result). If foo is of the form /bar/ then it is interpreted as a regexp. Otherwise it is treated like an ordinary string to match.</dt>
+<dd>
 
-<dt><strong><code>v  [row:col]</code>	Display the contents of the specified cell (on screen) in the message area.  Useful when a cell is too small to fully display its contents.</strong></dt>
+</dd>
+<dt id="n-p-Next-previous-search-result-for-last-search.-p-may-also-be-used-to-search-backwards"><b>n,p</b> Next, previous search result for last search. &quot;p&quot; may also be used to search backwards.</dt>
+<dd>
 
-<dt><strong><a name="h_n_toggle_hidden_status_of_column_n_hidden_columns_are_not_shown_or_searched_and_may_or_may_not_be_frozen" class="item"><code>H [n]</code>			Toggle hidden status of column n.  Hidden columns are not shown or searched and may or may not be frozen.</a></strong></dt>
+</dd>
+<dt id="v-row:col-Display-the-contents-of-the-specified-cell-on-screen-in-the-message-area.-Useful-when-a-cell-is-too-small-to-fully-display-its-contents"><b>v [row:col]</b> Display the contents of the specified cell (on screen) in the message area. Useful when a cell is too small to fully display its contents.</dt>
+<dd>
 
-<dt><strong><a name="h_unhide_all_columns" class="item"><code>H [.]</code>			Unhide all columns.</a></strong></dt>
+</dd>
+<dt id="H-n-Toggle-hidden-status-of-column-n.-Hidden-columns-are-not-shown-or-searched-and-may-or-may-not-be-frozen"><b>H [n]</b> Toggle hidden status of column n. Hidden columns are not shown or searched and may or may not be frozen.</dt>
+<dd>
 
-<dt><strong><a name="n_expand_width_of_column_n_by_1" class="item"><code>+ [n]</code>			Expand width of column n by 1.</a></strong></dt>
+</dd>
+<dt id="H-.-Unhide-all-columns"><b>H [.]</b> Unhide all columns.</dt>
+<dd>
 
-<dt><strong><a name="1" class="item"><code>- [n]</code>			Shrink width of column n by 1.  The width cannot drop below 1 (to hide the column, use 'H').</a></strong></dt>
+</dd>
+<dt id="n-Expand-width-of-column-n-by-1"><b>+ [n]</b> Expand width of column n by 1.</dt>
+<dd>
 
-<dt><strong><a name="expand_width_of_all_columns_by_1" class="item"><code>+ [.]</code>			Expand width of all columns by 1.</a></strong></dt>
+</dd>
+<dt id="n-Shrink-width-of-column-n-by-1.-The-width-cannot-drop-below-1-to-hide-the-column-use-H"><b>- [n]</b> Shrink width of column n by 1. The width cannot drop below 1 (to hide the column, use &#39;H&#39;).</dt>
+<dd>
 
-<dt><strong><a name="shrink_width_of_all_columns_by_1_the_width_of_any_column_cannot_drop_below_1" class="item"><code>- [.]</code>			Shrink width of all columns by 1.  The width of any column cannot drop below 1.</a></strong></dt>
+</dd>
+<dt id="Expand-width-of-all-columns-by-1"><b>+ [.]</b> Expand width of all columns by 1.</dt>
+<dd>
 
-<dt><strong><a name="w_n_w_specify_width_of_column_n_as_w" class="item"><code>W [n:w]</code>		Specify width of column n as w.</a></strong></dt>
+</dd>
+<dt id="Shrink-width-of-all-columns-by-1.-The-width-of-any-column-cannot-drop-below-1"><b>- [.]</b> Shrink width of all columns by 1. The width of any column cannot drop below 1.</dt>
+<dd>
 
-<dt><strong><a name="w_w_specify_width_of_all_columns_as_w" class="item"><code>W [.:w]</code>		Specify width of all columns as w.</a></strong></dt>
+</dd>
+<dt id="Expand-width-of-all-columns-by-1-same-as"><b>)</b> Expand width of all columns by 1 (same as &quot;+ .&quot;)</dt>
+<dd>
 
-<dt><strong><a name="m_c_mark_position_and_label_it_with_letter_c" class="item"><code>m [c]</code>			Mark position and label it with letter c.</a></strong></dt>
+</dd>
+<dt id="Shrink-width-of-all-columns-by-1-same-as"><b>(</b> Shrink width of all columns by 1 (same as &quot;- .&quot;)</dt>
+<dd>
 
-<dt><strong><a name="c_return_to_the_position_labelled_with_letter_c" class="item"><code>' [c]</code>			Return to the position labelled with letter c.</a></strong></dt>
+</dd>
+<dt id="W-n:w-Specify-width-of-column-n-as-w"><b>W [n:w]</b> Specify width of column n as w.</dt>
+<dd>
 
-<dt><strong><a name="n_justify_column_n_to_left" class="item"><code>^ [n]</code>			Justify column n to left.</a></strong></dt>
+</dd>
+<dt id="W-.:w-Specify-width-of-all-columns-as-w"><b>W [.:w]</b> Specify width of all columns as w.</dt>
+<dd>
 
-<dt><strong><a name="n_justify_column_n_to_right" class="item"><code>$ [n]</code>			Justify column n to right.</a></strong></dt>
+</dd>
+<dt id="W-w-Specify-width-of-all-columns-as-w-same-as-W-.:w"><b>W [w]</b> Specify width of all columns as w (same as &quot;W .:w&quot;)</dt>
+<dd>
 
-<dt><strong><a name="justify_all_columns_to_left" class="item"><code>^ [.]</code>			Justify all columns to left.</a></strong></dt>
+</dd>
+<dt id="m-c-Mark-position-and-label-it-with-letter-c"><b>m [c]</b> Mark position and label it with letter c.</dt>
+<dd>
 
-<dt><strong><a name="justify_all_columns_to_right" class="item"><code>$ [.]</code>			Justify all columns to right.</a></strong></dt>
+</dd>
+<dt id="c-Return-to-the-position-labelled-with-letter-c"><b>&#39; [c]</b> Return to the position labelled with letter c.</dt>
+<dd>
 
-<dt><strong><a name="x_toggle_grid" class="item"><code>x</code>			Toggle grid.</a></strong></dt>
+</dd>
+<dt id="n-Justify-column-n-to-left"><b>^ [n]</b> Justify column n to left.</dt>
+<dd>
 
-<dt><strong><a name="z_toggle_frozen_section_separators" class="item"><code>z</code>			Toggle frozen section separators.</a></strong></dt>
+</dd>
+<dt id="n-Justify-column-n-to-right"><b>$ [n]</b> Justify column n to right.</dt>
+<dd>
 
-<dt><strong><a name="p_toggle_row_index_column" class="item"><code>P</code>			Toggle row index column.</a></strong></dt>
+</dd>
+<dt id="Justify-all-columns-to-left"><b>^ [.]</b> Justify all columns to left.</dt>
+<dd>
 
-<dt><strong><a name="v_toggle_column_index_row" class="item"><code>V</code>			Toggle column index row.</a></strong></dt>
+</dd>
+<dt id="Justify-all-columns-to-right"><b>$ [.]</b> Justify all columns to right.</dt>
+<dd>
 
-<dt><strong><a name="l_row_col_move_the_upper_left_corner_of_the_active_region_to_the_specified_row_and_column_if_they_are_frozen_or_hidden_find_a_nearby_substitute" class="item"><code>L [row:col]</code>		Move the upper left corner of the active region to the specified row and column.  If they are frozen or hidden, find a nearby substitute.</a></strong></dt>
+</dd>
+<dt id="Justify-all-columns-to-left-same-as"><b>[</b> Justify all columns to left (same as &quot;^ .&quot;)</dt>
+<dd>
 
-<dt><strong><a name="q_quit" class="item"><code>q</code>			Quit.</a></strong></dt>
+</dd>
+<dt id="Justify-all-columns-to-right-same-as"><b>]</b> Justify all columns to right (same as &quot;$ .&quot;)</dt>
+<dd>
 
-<dt><strong><a name="y_resize_the_screen_to_fit_the_terminal_this_should_be_done_automatically_when_the_terminal_is_resized_but_a_command_is_provided_in_case_a_manual_repaint_is_needed" class="item"><code>Y</code>			Resize the screen to fit the terminal.  This should be done automatically when the terminal is resized, but a command is provided in case a manual repaint is needed.</a></strong></dt>
+</dd>
+<dt id="x-Toggle-grid"><b>x</b> Toggle grid.</dt>
+<dd>
 
-<dt><strong><a name="f_clear_eof_info_so_that_new_lines_added_afterward_can_be_read" class="item"><code>F</code>			Clear EOF info so that new lines added afterward can be read.</a></strong></dt>
+</dd>
+<dt id="z-Toggle-frozen-section-separators"><b>z</b> Toggle frozen section separators.</dt>
+<dd>
 
+</dd>
+<dt id="P-Toggle-row-index-column"><b>P</b> Toggle row index column.</dt>
+<dd>
+
+</dd>
+<dt id="V-Toggle-column-index-row"><b>V</b> Toggle column index row.</dt>
+<dd>
+
+</dd>
+<dt id="L-row:col-Move-the-upper-left-corner-of-the-active-region-to-the-specified-row-and-column.-If-they-are-frozen-or-hidden-find-a-nearby-substitute"><b>L [row:col]</b> Move the upper left corner of the active region to the specified row and column. If they are frozen or hidden, find a nearby substitute.</dt>
+<dd>
+
+</dd>
+<dt id="q-Quit"><b>q</b> Quit.</dt>
+<dd>
+
+</dd>
+<dt id="Y-Resize-the-screen-to-fit-the-terminal.-This-should-be-done-automatically-when-the-terminal-is-resized-but-a-command-is-provided-in-case-a-manual-repaint-is-needed"><b>Y</b> Resize the screen to fit the terminal. This should be done automatically when the terminal is resized, but a command is provided in case a manual repaint is needed.</dt>
+<dd>
+
+</dd>
+<dt id="F-Clear-EOF-info-so-that-new-lines-added-afterward-can-be-read"><b>F</b> Clear EOF info so that new lines added afterward can be read.</dt>
+<dd>
+
+</dd>
 </dl>
-<p>Note that the <code>G</code> and <code>S</code> commands necessarily involve a seek to the end of the file and will be expensive for large files.  Also, the commands <code>s</code>, <code>n</code>, <code>p</code>, and <code>L</code> may prove expensive depending on the details of the file and request.</p>
-<p>
-</p>
-<hr />
-<h1><a name="key_summary">Key Summary</a></h1>
-<pre>
- Action        Cols                 Rows
+
+<p>Note that the <b>G</b> and <b>S</b> commands necessarily involve a seek to the end of the file and will be expensive for large files. Also, the commands <b>s</b>, <b>n</b>, <b>p</b>, and <b>L</b> may prove expensive depending on the details of the file and request.</p>
+
+<h1 id="Key-Summary">Key Summary</h1>
+
+<pre><code> Action   &lt;--Cols--&gt;   &lt;---------Rows----------&gt;
  -----------------------------------------------
- Move       a &lt; l r &gt; e    g b|u y|k j f|d|spc G
- (Un)Freeze   C [n|.]              R [n|.]      
- (Un)Hide   H [n|.]                             
- Search     S|? [str|/str/]      s|/ [str|/str/]
+ Move    a &lt; l r &gt; e   g b|u y|k j|ret f|d|spc G
+ (Un)Freeze  C [n|.]            R [n|.]         
+ (Un)Hide    H [n|.]                            
+ Search  S|? [str|/str/]      s|/ [str|/str/]   
  -----------------------------------------------
- Col width:  +/-[n|.]   W[n:m]    W[.:m]        
- Cell just (lft|rgt):   ^|$ [n|.]               
- Mark set|recover:      m|' [c]                 
+ Col width:  +/-[n|.]  ( )   W[n:w] W[.:w] W[w]
+ Cell just (lft|rgt):   ^|$ [n|.]    [  ]       
+ Mark set|recover:      m|&#39; [c]                 
  Cell: L[row:col] (goto) v[row:col] (disp)      
  General: q(quit) h(hlp) Y(draw) F(rsteof)      
  Disp: x(grid) z(seps) P(rowidx) V(colidx)      
- -----------------------------------------------</pre>
-<p>
-</p>
-<hr />
-<h1><a name="examples">EXAMPLES</a></h1>
-<p>Parse csv file:
-<strong>tless -c -f foo.csv</strong></p>
-<p>Parse tab-delimited:
-<strong>cat foo.txt | tless -s &quot;\\t&quot; -a</strong></p>
-<p>Parse white-space separated columns:
-<strong>cat foo.txt | tless -d &quot; \\t&quot; -a</strong></p>
-<p>Parse left-justified fixed width columns:
-<strong>tless -f foo.txt -j left -x:10:20:30:40:50:65</strong></p>
-<p>Parse ':' separated columns that are all the same width:
-<strong>tless -f foo.txt -d &quot;:&quot; -w 15</strong></p>
-<p>A simple setup
-<strong>tless -f foo.txt -X &quot;x y C:0 R:0 L:24:10&quot;</strong></p>
-<p>
-</p>
-<hr />
-<h1><a name="exit_status">EXIT STATUS</a></h1>
-<p>tless returns a zero exit status.  It restores the terminal on exit.</p>
-<p>
-</p>
-<hr />
-<h1><a name="author">AUTHOR</a></h1>
+ -----------------------------------------------</code></pre>
+
+<h1 id="EXAMPLES">EXAMPLES</h1>
+
+<p>Parse csv file: <b>tless -c -f foo.csv</b></p>
+
+<p>Parse tab-delimited: <b>tless -f foo.txt -s &quot;&quot; -t -a</b></p>
+
+<p>Parse white-space separated columns: <b>tless -f foo.txt -d &quot; &quot; -t -a</b></p>
+
+<p>Parse left-justified fixed-width columns: <b>tless -f foo.txt -j left -x:10:10:15:8:15:6</b></p>
+
+<p>Parse &#39;:&#39; separated columns that are all the same width: <b>tless -f foo.txt -d &quot;:&quot; -w 15</b></p>
+
+<p>A simple setup <b>tless -f foo.txt -X &quot;C:0 R:0 L:24:10&quot;</b></p>
+
+<h1 id="EXIT-STATUS">EXIT STATUS</h1>
+
+<p>tless returns a zero exit status. It restores the terminal on exit.</p>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
 <p>Ken Halpern</p>
-<p>
-</p>
-<hr />
-<h1><a name="license">LICENSE</a></h1>
+
+<h1 id="LICENSE">LICENSE</h1>
+
 <p>tless may be used under the terms of the following BSD license.</p>
+
 <p>Copyright (c) 2011, Ken Halpern</p>
+
 <p>All rights reserved.</p>
+
 <p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+
 <p>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</p>
+
 <p>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</p>
+
 <p>Neither the name of the author nor the names of any contributors may be used to endorse or promote products derived from this software without specific prior written permission.</p>
+
 <p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
-<p>
-</p>
-<hr />
-<h1><a name="see_also">SEE ALSO</a></h1>
-<p><code>less(1)</code>, <code>troff(1)</code></p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p>less(1), troff(1)</p>
+
 
 </body>
 
 </html>
+
+

@@ -5,7 +5,7 @@
 #include <string>
 #include <assert.h>
 #ifndef KTVTESTMODE
-#include <curses.h>
+#include <ncurses.h>
 #endif
 #include "KTVIdxList.h"
 using namespace std;

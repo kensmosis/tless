@@ -1,9 +1,8 @@
-#  Script to test tless.  For each 'type' below, a table is generated in /tmp and used for a tless session.
-#	Hit 'q' to end.
+#  Script for testing tless.  For each 'type' below, a table is generated and output to the specified file.  
 #
 #  The resulting tless session should look and act the same for all choices ('fixed' may have different col widths, though).  Otherwise there is a bug.
 #
-#  Arg:  type numrows numcols tlesscmd
+#  Arg:  outfile type numrows numcols
 #		tab			test tab-delimited using --sdelim
 #		spaces		test space-delimited using --delim
 #		csv			test csv
@@ -11,7 +10,7 @@
 #		multi		test --delim with multiple delimiters (space | and : and tab) (randomly generated)
 #
 #
-# ex.   perl ./TestGenTable.pl tab 
+# ex.   perl ./TestGenTable.pl foo.txt tab 10 20
 
 use strict;
 
@@ -19,26 +18,26 @@ main(@ARGV);
 
 sub main
 {
+	my $ofil= shift;
 	my $type= shift;
 	my $nrows= shift;
 	my $ncols= shift;
-	my $tlesscmd= shift||"./bin/tless";
+	my $tlesscmd= "tless";
 	my @wids= ();
 	for (my $j=0;$j<$ncols;++$j)
 	{
 		push @wids,6+int(rand(8));
 	}
-	my $tmpfil= "/tmp/shaldkfjh.".$$."$^T".".foo";
 
 	my $cmd= "";
-	if ($type eq "tab") { $cmd= "$tlesscmd -s \'\' -t -f \"$tmpfil\""; }
-	elsif ($type eq "spaces") { $cmd= "$tlesscmd -d \" \" -f \"$tmpfil\""; }
-	elsif ($type eq "csv") { $cmd= "$tlesscmd --csv -f \"$tmpfil\""; }
-	elsif ($type eq "fixed") { $cmd= "$tlesscmd -x ".join(":",@wids)." -f \"$tmpfil\""; }
-	elsif ($type eq "multi") { $cmd= "$tlesscmd -d \' :|\' -t -f \"$tmpfil\""; }
+	if ($type eq "tab") { $cmd= "$tlesscmd -s \'\' -t -f \"$ofil\""; }
+	elsif ($type eq "spaces") { $cmd= "$tlesscmd -d \" \" -f \"$ofil\""; }
+	elsif ($type eq "csv") { $cmd= "$tlesscmd --csv -f \"$ofil\""; }
+	elsif ($type eq "fixed") { $cmd= "$tlesscmd -x ".join(":",@wids)." -f \"$ofil\""; }
+	elsif ($type eq "multi") { $cmd= "$tlesscmd -d \' :|\' -t -f \"$ofil\""; }
 	else { die "Invalid type [$type]"; }
 
-	open (TFIL,">$tmpfil") or die "Could not open [$tmpfil] for output";
+	open (TFIL,">$ofil") or die "Could not open [$ofil] for output";
 	for (my $i=0;$i<$nrows;++$i)
 	{
 		for (my $j=0;$j<$ncols;++$j)
@@ -80,12 +79,4 @@ sub main
 	}
 	close TFIL;
 	printf STDERR "[$cmd]\n";
-	my $pid= fork();
-	if (!$pid)
-	{
-		exec $cmd;
-		die "Failed to execute $cmd";
-	}
-	waitpid $pid, 0;
-	`rm -f \"$tmpfil\"`;
 }
